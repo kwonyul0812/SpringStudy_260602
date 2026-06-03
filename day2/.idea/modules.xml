@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/day2-di.iml" filepath="$PROJECT_DIR$/.idea/modules/day2-di.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/day2-di_main.iml" filepath="$PROJECT_DIR$/.idea/modules/day2-di_main.iml" group="day2-di" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/day2-di_test.iml" filepath="$PROJECT_DIR$/.idea/modules/day2-di_test.iml" group="day2-di" />
+    </modules>
+  </component>
+</project>
