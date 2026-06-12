@@ -21,7 +21,7 @@ public class MemberController {
 
     @PostMapping("/members")
     public void create() {
-        MemberDto member = new MemberDto(1L, "qq", "kwon@naver.com");
+        MemberDto member = MemberDto.builder().id(1L).name("홍길동").email("h@a.com").build();
         int num = memberService.createMember(member);
         if (num == 1) {
             System.out.println("회원 생성");
