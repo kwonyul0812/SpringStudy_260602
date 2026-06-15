@@ -41,4 +41,14 @@ public class CardController {
     public void nullExceptTest() throws Exception {
         throw new Exception();
     }
+
+    @GetMapping("/test/masking/{id}")
+    public void testMasking(@PathVariable Long id) {
+        cardService.testMasking(id);
+    }
+
+    @GetMapping("/err")
+    public void err() {
+        throw new RuntimeException("런타임 에러 발생");
+    }
 }

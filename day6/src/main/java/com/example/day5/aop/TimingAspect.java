@@ -14,7 +14,7 @@ public class TimingAspect {
     @Around("execution(* com.example.day5.controller..*(..))")
     public Object measure(ProceedingJoinPoint pjp) throws Throwable {
         long start = System.currentTimeMillis();
-        Thread.sleep(1500);
+//        Thread.sleep(1500);
         try {
             return pjp.proceed();
         } finally {

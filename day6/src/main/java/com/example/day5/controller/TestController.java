@@ -6,10 +6,7 @@ import com.example.day5.service.CardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
@@ -53,5 +50,10 @@ public class TestController {
 
         Card c = cardRepository.findById(cardId).orElseThrow(() -> new EntityNotFoundException("회원 없음"));
         log.info("최종 잔액: {}", c.getBalance().stripTrailingZeros().toPlainString());
+    }
+
+    @GetMapping("/logTest")
+    public void logTest() {
+        cardService.logTest();
     }
 }

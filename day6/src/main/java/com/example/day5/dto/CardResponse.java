@@ -1,6 +1,7 @@
 package com.example.day5.dto;
 
 import com.example.day5.entity.Card;
+import com.example.day5.util.MaskingUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,7 @@ public class CardResponse {
 
     public static CardResponse from(Card card) {
         return new CardResponse(card.getId(),
-                card.getCardNo(),
+                MaskingUtil.maskCardNo(card.getCardNo()),
                 card.getBalance());
     }
 }

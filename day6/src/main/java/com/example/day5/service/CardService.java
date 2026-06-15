@@ -6,6 +6,7 @@ import com.example.day5.dto.CardResponse;
 import com.example.day5.entity.Card;
 import com.example.day5.exception.MemberNotFoundException;
 import com.example.day5.repository.CardRepository;
+import com.example.day5.util.MaskingUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
@@ -53,5 +54,25 @@ public class CardService {
         Card card = cardRepository.findById(cardId).orElseThrow(() -> new MemberNotFoundException(cardId));
         CardResponse cardResponse = CardResponse.from(card);
         return cardResponse;
+    }
+
+    public void logTest() {
+        String test = "테스트";
+        log.info("정상 흐름" + test);
+        log.info("정상 흐름 {}", test);
+        log.warn("외부 호출 1초 초과시");
+        try {
+            throw new RuntimeException();
+        } catch (RuntimeException e) {
+//            e.printStackTrace();
+            log.error("런타임 에러 발생", e);
+        }
+        log.debug("Debug 분기 추적");
+    }
+
+    @Transactional
+    public void testMasking(Long cardId) {
+        Card card = cardRepository.findById(cardId).orElseThrow(() -> new MemberNotFoundException(cardId));
+        log.info("마스킹된 카드번호 : {}", MaskingUtil.maskCardNo(card.getCardNo()));
     }
 }
