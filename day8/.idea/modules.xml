@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/day5-lock-aop.iml" filepath="$PROJECT_DIR$/.idea/modules/day5-lock-aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/day5-lock-aop_main.iml" filepath="$PROJECT_DIR$/.idea/modules/day5-lock-aop_main.iml" group="day5-lock-aop" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/day5-lock-aop_test.iml" filepath="$PROJECT_DIR$/.idea/modules/day5-lock-aop_test.iml" group="day5-lock-aop" />
+    </modules>
+  </component>
+</project>
