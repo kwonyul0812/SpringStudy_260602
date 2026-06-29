@@ -5,6 +5,7 @@ import com.example.day5.dto.MemberResponse;
 import com.example.day5.dto.MemberUpdateRequest;
 import com.example.day5.service.MemberOuterService;
 import com.example.day5.service.MemberService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/members")
+@Slf4j
 public class MemberController {
 
     private final MemberService memberService;
@@ -32,26 +34,31 @@ public class MemberController {
         this.memberOuterService = memberOuterService;
     }
 
-//    @PostMapping
-//    public ResponseEntity<MemberResponse> create(@RequestBody @Valid MemberCreateRequest request) throws IOException {
-//        MemberResponse memberResponse = memberService.create(request);
-//        return ResponseEntity
-//                .status(HttpStatus.CREATED)
-//                .body(memberResponse);
-//    }
-
     @PostMapping
     public ResponseEntity<MemberResponse> create(@RequestBody @Valid MemberCreateRequest request) {
-        MemberResponse memberResponse = memberOuterService.testOuter(request);
+        MemberResponse memberResponse = memberService.create(request);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(memberResponse);
     }
 
+//    @PostMapping
+//    public ResponseEntity<MemberResponse> create(@RequestBody @Valid MemberCreateRequest request) {
+//        MemberResponse memberResponse = memberOuterService.testOuter(request);
+//        return ResponseEntity
+//                .status(HttpStatus.CREATED)
+//                .body(memberResponse);
+//    }
+
     // 조회
     @GetMapping("/{id}")
     public MemberResponse findOne(@PathVariable Long id) throws InterruptedException {
-        return memberService.findOne(id);
+        long start = System.currentTimeMillis();
+
+        MemberResponse memberResponse = memberService.findOne(id);
+        long responseTime = System.currentTimeMillis() - start;
+        log.info("응답시간 : {}ms", responseTime);
+        return memberResponse;
     }
 
     @GetMapping
